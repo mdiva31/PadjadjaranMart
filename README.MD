@@ -4,7 +4,7 @@ Back-end branch for PadjadjaranMart.
 
 ## Installation
 
-Use the package manager node module to install PadjadjaranMart
+Use the package to install PadjadjaranMart
 
 ```bash
 yarn add dev
@@ -21,4 +21,4 @@ Please make sure to update tests as appropriate.
 
 [Leonardo Dwigantoro](https://twitter.com/dwigantoro_)
 
-created with love
+Created with love ❤️
