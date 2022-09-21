@@ -3,6 +3,8 @@ const app = express();
 const mongoose = require("mongoose");
 const dotenv = require("dotenv");
 const userRoute = require("./routes/user")
+const authRoute = require("./routes/auth")
+
 
 // menggunakan configurasi enkripsi dotenv
 dotenv.config();
@@ -18,6 +20,7 @@ mongoose
 // API end point
 app.use(express.json());
 app.use("/api/users", userRoute);
+app.use("/api/auth", authRoute);
 
 // PORT Backend
 app.listen(process.env.PORT || 5000, () => {
