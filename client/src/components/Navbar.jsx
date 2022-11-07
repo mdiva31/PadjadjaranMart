@@ -74,18 +74,19 @@ const Navbar = () => {
     <Container>
       <Wrapper>
         <Left>
-          <Language>EN</Language>
-          <SearchContainer>
-            <Input placeholder="Search" />
-            <Search style={{ color: "gray", fontSize: 16 }} />
-          </SearchContainer>
         </Left>
         <Center>
+        <Link to="/">
           <Logo>PadjadjaranMart</Logo>
+          </Link>
         </Center>
         <Right>
-          <MenuItem>REGISTER</MenuItem>
+          <Link to="/Login">
           <MenuItem>SIGN IN</MenuItem>
+          </Link>
+          <Link to="/Register">
+          <MenuItem>REGISTER</MenuItem>
+          </Link>
           <Link to="/cart">
           <MenuItem>
             <Badge badgeContent={quantity} color="primary">

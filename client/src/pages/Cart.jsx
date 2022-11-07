@@ -188,14 +188,7 @@ const Cart = () => {
       <Announcement />
       <Wrapper>
         <Title>YOUR BAG</Title>
-        <Top>
-          <TopButton>CONTINUE SHOPPING</TopButton>
-          <TopTexts>
-            <TopText>Shopping Bag(2)</TopText>
-            <TopText>Your Wishlist (0)</TopText>
-          </TopTexts>
-          <TopButton type="filled">CHECKOUT NOW</TopButton>
-        </Top>
+ 
         <Bottom>
           <Info>
             {cart.products.map((product) => (
@@ -217,9 +210,9 @@ const Cart = () => {
                 </ProductDetail>
                 <PriceDetail>
                   <ProductAmountContainer>
-                    <Add />
+                   
                     <ProductAmount>{product.quantity}</ProductAmount>
-                    <Remove />
+                   
                   </ProductAmountContainer>
                   <ProductPrice>
                     $ {product.price * product.quantity}
