@@ -12,7 +12,7 @@ const Container = styled.div`
 `;
 
 const Announcement = () => {
-  return <Container>Gratis Ongkir Minimal Belanja Rp. 50000!!!</Container>;
+  return <Container>Dapatkan Produk Berkualitas Dengan Harga Murah!!!</Container>;
 };
 
 export default Announcement;

@@ -1,4 +1,3 @@
-import { Add, Remove } from "@material-ui/icons";
 import { useSelector } from "react-redux";
 import styled from "styled-components";
 import Announcement from "../components/Announcement";
@@ -9,6 +8,8 @@ import StripeCheckout from "react-stripe-checkout";
 import { useEffect, useState } from "react";
 import { userRequest } from "../requestMethods";
 import { useHistory } from "react-router";
+import { deleteProduct } from "../redux/cartRedux";
+import { useDispatch } from "react-redux";
 
 const KEY = process.env.REACT_APP_STRIPE;
 
@@ -37,17 +38,8 @@ const TopButton = styled.button`
   cursor: pointer;
   border: ${(props) => props.type === "filled" && "none"};
   background-color: ${(props) =>
-    props.type === "filled" ? "black" : "transparent"};
+    props.type === "filled" ? "white" : "transparent"};
   color: ${(props) => props.type === "filled" && "white"};
-`;
-
-const TopTexts = styled.div`
-  ${mobile({ display: "none" })}
-`;
-const TopText = styled.span`
-  text-decoration: underline;
-  cursor: pointer;
-  margin: 0px 10px;
 `;
 
 const Bottom = styled.div`
@@ -163,11 +155,21 @@ const Cart = () => {
   const cart = useSelector((state) => state.cart);
   const [stripeToken, setStripeToken] = useState(null);
   const history = useHistory();
+  const [product] = useState({});
+  const [quantity] = useState(1);
+  const [color] = useState("");
+  const [size ] = useState("");
+  const dispatch = useDispatch();
 
   const onToken = (token) => {
     setStripeToken(token);
   };
 
+  const handleClick = () => {
+    dispatch(
+      deleteProduct({ ...product, quantity, color, size })
+    );
+  };
   useEffect(() => {
     const makeRequest = async () => {
       try {
@@ -188,7 +190,10 @@ const Cart = () => {
       <Announcement />
       <Wrapper>
         <Title>YOUR BAG</Title>
- 
+        <Top>
+          <TopButton onClick={handleClick} >Hapus Chart</TopButton>
+          <TopButton type="filled">CHECKOUT NOW</TopButton>
+        </Top>
         <Bottom>
           <Info>
             {cart.products.map((product) => (
@@ -210,12 +215,10 @@ const Cart = () => {
                 </ProductDetail>
                 <PriceDetail>
                   <ProductAmountContainer>
-                   
-                    <ProductAmount>{product.quantity}</ProductAmount>
-                   
+                    <ProductAmount>Jumlah: {product.quantity}</ProductAmount>
                   </ProductAmountContainer>
                   <ProductPrice>
-                    $ {product.price * product.quantity}
+                    Rp. {product.price * product.quantity}
                   </ProductPrice>
                 </PriceDetail>
               </Product>
@@ -226,26 +229,18 @@ const Cart = () => {
             <SummaryTitle>ORDER SUMMARY</SummaryTitle>
             <SummaryItem>
               <SummaryItemText>Subtotal</SummaryItemText>
-              <SummaryItemPrice>$ {cart.total}</SummaryItemPrice>
-            </SummaryItem>
-            <SummaryItem>
-              <SummaryItemText>Estimated Shipping</SummaryItemText>
-              <SummaryItemPrice>$ 5.90</SummaryItemPrice>
-            </SummaryItem>
-            <SummaryItem>
-              <SummaryItemText>Shipping Discount</SummaryItemText>
-              <SummaryItemPrice>$ -5.90</SummaryItemPrice>
+              <SummaryItemPrice>Rp. {cart.total}</SummaryItemPrice>
             </SummaryItem>
             <SummaryItem type="total">
               <SummaryItemText>Total</SummaryItemText>
-              <SummaryItemPrice>$ {cart.total}</SummaryItemPrice>
+              <SummaryItemPrice>Rp. {cart.total}</SummaryItemPrice>
             </SummaryItem>
             <StripeCheckout
               name="PadjadjaranMart"
               image="https://www.gardeningknowhow.com/wp-content/uploads/2019/09/flower-color-400x391.jpg"
               billingAddress
               shippingAddress
-              description={`Your total is $${cart.total}`}
+              description={`Your total is Rp.${cart.total}`}
               amount={cart.total * 100}
               token={onToken}
               stripeKey={KEY}
