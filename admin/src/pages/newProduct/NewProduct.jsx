@@ -1,11 +1,6 @@
 import { useState } from "react";
 import "./newProduct.css";
-import {
-  getStorage,
-  ref,
-  uploadBytesResumable,
-  getDownloadURL,
-} from "firebase/storage";
+import { getStorage, ref, uploadBytesResumable, getDownloadURL } from "firebase/storage";
 import app from "../../firebase";
 import { addProduct } from "../../redux/apiCalls";
 import { useDispatch } from "react-redux";
@@ -75,6 +70,7 @@ export default function NewProduct() {
         <div className="addProductItem">
           <label>Image</label>
           <input
+            name="img"
             type="file"
             id="file"
             onChange={(e) => setFile(e.target.files[0])}

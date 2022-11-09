@@ -61,7 +61,6 @@ export default function Product() {
         </Link>
       </div>
       <div className="productTop">
-
         <div className="productTopRight">
           <div className="productInfoTop">
             <img src={product.img} alt="" className="productInfoImg" />
