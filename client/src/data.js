@@ -26,20 +26,20 @@ export const sliderItems = [
     {
       id: 1,
       img: "https://i.ibb.co/RDq2zWW/unknown-19.png",
-      title: "SHIRT STYLE!",
+      title: "Women Zone!!!",
       cat:"women"
     },
     {
       id: 2,
       img: "https://i.ibb.co/Gv5hP3v/leopantai.png",
-      title: "LOUNGEWEAR LOVE",
-      cat:"coat"
+      title: "Men Zone!!!",
+      cat:"men"
     },
     {
       id: 3,
       img: "https://i.ibb.co/d7DJ2TN/jagawarung.png",
-      title: "LIGHT JACKETS",
-      cat:"jeans"
+      title: "JACKETS",
+      cat:"jacket"
     },
   ];
 
