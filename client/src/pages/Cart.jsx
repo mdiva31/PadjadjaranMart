@@ -244,6 +244,7 @@ const Cart = () => {
               amount={cart.total * 100}
               token={onToken}
               stripeKey={KEY}
+              currency="idr"
             >
               <Button>CHECKOUT NOW</Button>
             </StripeCheckout>

@@ -19,7 +19,7 @@ const App = () => {
     <Router>
       <Switch>
         <Route exact path="/">
-        {user ?  <Login /> : <Home />}
+        {user ? <Home />  : <Login /> }
         </Route>
         <Route path="/products/:category">
           <ProductList />

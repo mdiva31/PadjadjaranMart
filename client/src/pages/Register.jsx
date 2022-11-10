@@ -1,6 +1,9 @@
 import styled from "styled-components";
 import { mobile } from "../responsive";
 import { Link } from "react-router-dom";
+import { useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { register } from "../redux/apiCalls";
 
 const Container = styled.div`
   width: 100vw;
@@ -56,24 +59,36 @@ const Button = styled.button`
 `;
 
 const Register = () => {
+  const [username, setUsername] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const { error } = useSelector((state) => state.user);
+  const dispatch = useDispatch();
+
+  const handleClick = (e) => {
+    e.preventDefault();
+    register(dispatch, { username, email,password });
+  };
+  const Error = styled.span`
+  color: red;
+`;
   return (
     <Container>
       <Wrapper>
         <Title>CREATE AN ACCOUNT</Title>
         <Form>
-          <Input placeholder="name" />
-          <Input placeholder="last name" />
-          <Input placeholder="username" />
-          <Input placeholder="email" />
-          <Input placeholder="password" type="password" />
-          <Input placeholder="confirm password" type="password" />
+          <Input value={username} onChange={(e) => setUsername(e.target.value)} placeholder="username" />
+          <Input value={email} onChange={(e) => setEmail(e.target.value)} placeholder="email" />
+          <Input value={password} onChange={(e) => setPassword(e.target.value)} placeholder="password" type="password" />
+          
           <Agreement>
             Dengan Membuat Akun, saya bersedia menggunakan aplikasi ini dengan baik dan benar
             <br /><b>Sudah Punya Akun?</b><Link to="/login">LOGIN</Link> 
-          </Agreement>
+          </Agreement><br /><br />
           
-          <Button>CREATE</Button>
+          <Button onClick={handleClick}>CREATE</Button>
         </Form>
+        {error && <Error>Something went wrong...</Error>} 
       </Wrapper>
     </Container>
   );
