@@ -3,8 +3,10 @@ import { ShoppingCartOutlined } from "@material-ui/icons";
 import React from "react";
 import styled from "styled-components";
 import { mobile } from "../responsive";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
+import { logout } from "../redux/apiCalls";
+
 
 const Container = styled.div`
   height: 60px;
@@ -51,9 +53,23 @@ const MenuItem = styled.div`
   margin-left: 25px;
   ${mobile({ fontSize: "12px", marginLeft: "10px" })}
 `;
+const Button = styled.div`
+  flex: 1;
+  text-align: center;
+  color: white;
+  padding: 5px;
+  font-size: 15px;
+  background-color: red;
+  cursor: pointer;
+`;
 
 const Navbar = () => {
   const quantity = useSelector(state=>state.cart.quantity)
+  const dispatch = useDispatch();
+  const handleClick = () => {
+    logout(dispatch);
+  window.location.reload()
+  }
   return (
     <Container>
       <Wrapper>
@@ -65,12 +81,9 @@ const Navbar = () => {
           </Link>
         </Center>
         <Right>
-          <Link to="/Login">
-          <MenuItem>SIGN IN</MenuItem>
-          </Link>
-          <Link to="/Register">
-          <MenuItem>REGISTER</MenuItem>
-          </Link>
+        <MenuItem>
+          <Button onClick={handleClick}>LOG OUT</Button>
+        </MenuItem>
           <Link to="/cart">
           <MenuItem>
             <Badge badgeContent={quantity} color="primary">
