@@ -1,8 +1,8 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { useDispatch,useSelector } from "react-redux";
 import { useLocation, Link  } from "react-router-dom";
-import { userRequest } from "../requestMethods";
 import { addOrder } from "../redux/apiCalls";
+import { useNavigate } from 'react-router-dom';
 
 const Success = () => {
   const location = useLocation();
@@ -14,17 +14,20 @@ const Success = () => {
   const amount = data.amount;
   const address = data.billing_details.address;
   const products = cart.products.map((item) => ({
-    productId: item._id,
-    quantity: item._quantity,
+    productId: item.title,
+    size: item.size,
+    color: item.color,
+    quantity: item.quantity,
 }))
 
-  const [orderId, setOrderId] = useState(null);
+  const [orderId] = useState(null);
   const dispatch = useDispatch();
-
+  const navigate = useNavigate();
 
     const handleClick = (e) => {
       e.preventDefault();
       addOrder(dispatch, { userId, products, amount, address});
+      navigate("/");
     };
 
   return (
@@ -42,7 +45,7 @@ const Success = () => {
         ? `Order has been created successfully. Your order number is ${orderId}`
         : `Successfull. Your order is being prepared...`}
         <Link to="/">
-        <button onClick={handleClick} style={{ padding: 10, marginTop: 20}}>Go to Homepage</button>
+        <button href="/" onClick={handleClick} style={{ padding: 10, marginTop: 20}}>Go to Homepage</button>
         </Link>
     </div>
   );

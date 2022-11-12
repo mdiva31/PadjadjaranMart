@@ -9,7 +9,6 @@ import { useEffect, useState } from "react";
 import { userRequest } from "../requestMethods";
 import { deleteProduct } from "../redux/cartRedux";
 import { useDispatch } from "react-redux";
-import { useLocation } from "react-router-dom";
 import { useNavigate } from 'react-router-dom';
 
 const KEY = process.env.REACT_APP_STRIPE;

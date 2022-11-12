@@ -1,24 +1,28 @@
 export const sliderItems = [
     {
       id: 1,
-      img: "https://i.ibb.co/bdrMGTK/4p.png",
-      title: "SUMMER SALE",
-      desc: "DISKON 30% SEMUA PRODUK HOODIE",
-      bg: "f5fafd",
+      img: "https://i.ibb.co/dkhfjSW/1-2018-0326-TBT-Spring-Ecomm-Shot03-238-w1-1812x1875.webp",
+      title: "MEN VEST",
+      desc: "TAMPIL KEREN DENGAN VEST YANG TERSEDIA!!!",
+      bg: "fbf0f4",
+      cat:"vest"
     },
     {
       id: 2,
-      img: "https://i.ibb.co/DG69bQ4/2.png",
-      title: "AUTUMN COLLECTION",
-      desc: "DISKON 10% SEMUA PRODUK JEANS",
+      img: "https://i.ibb.co/Bg8tb1s/205-floral-front-outside-2000x.webp",
+      title: "BlOUSE COLLECTION",
+      desc: "LIHAT PRODUK BLOUSE YANG ADA DI KATALOG KAMI!!!",
       bg: "fcf1ed",
+      cat:"blouse"
     },
     {
+
       id: 3,
-      img: "https://i.ibb.co/cXFnLLV/3.png",
-      title: "LOUNGEWEAR LOVE",
-      desc: "GRATIS ONGKIR SEMUA PRODUK",
-      bg: "fbf0f4",
+      img: "https://i.ibb.co/Dk5tdg6/maginot-2348-5483482-1.jpg",
+      title: "Chino",
+      desc: "CHINO ADALAH CELANA BERBAHAN TWILL, PENASARAN!!??",
+      bg: "f5fafd",
+      cat:"chino"
     },
   ];
 
@@ -31,14 +35,14 @@ export const sliderItems = [
     },
     {
       id: 2,
-      img: "https://i.ibb.co/Gv5hP3v/leopantai.png",
+      img: "https://i.ibb.co/bdrMGTK/4p.png",
       title: "Men Zone!!!",
       cat:"men"
     },
     {
       id: 3,
       img: "https://i.ibb.co/d7DJ2TN/jagawarung.png",
-      title: "JACKETS",
+      title: "JACKETS!!!",
       cat:"jacket"
     },
   ];

@@ -6,6 +6,7 @@ import { mobile } from "../responsive";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { logout } from "../redux/apiCalls";
+import pmart from "../img/Logo.png";
 
 
 const Container = styled.div`
@@ -28,17 +29,20 @@ const Left = styled.div`
 `;
 
 
+const Img = styled.img`
+  flex: 1;
 
+  align-items: center;
+  height: 7vh;
+  width: 15vw;
+`;
 
 const Center = styled.div`
   flex: 1;
   text-align: center;
 `;
 
-const Logo = styled.h1`
-  font-weight: bold;
-  ${mobile({ fontSize: "24px" })}
-`;
+
 const Right = styled.div`
   flex: 1;
   display: flex;
@@ -77,7 +81,7 @@ const Navbar = () => {
         </Left>
         <Center>
         <Link to="/">
-          <Logo>PadjadjaranMart</Logo>
+        <Img src={pmart}alt="image" />
           </Link>
         </Center>
         <Right>
