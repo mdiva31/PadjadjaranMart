@@ -7,7 +7,8 @@ const {
 
 const router = require("express").Router();
 
-// Create
+//CREATE
+
 router.post("/", verifyTokenAndAdmin, async (req, res) => {
   const newProduct = new Product(req.body);
 
@@ -19,7 +20,7 @@ router.post("/", verifyTokenAndAdmin, async (req, res) => {
   }
 });
 
-// Update Product
+//UPDATE
 router.put("/:id", verifyTokenAndAdmin, async (req, res) => {
   try {
     const updatedProduct = await Product.findByIdAndUpdate(
@@ -35,17 +36,17 @@ router.put("/:id", verifyTokenAndAdmin, async (req, res) => {
   }
 });
 
-// Delete user
+//DELETE
 router.delete("/:id", verifyTokenAndAdmin, async (req, res) => {
   try {
     await Product.findByIdAndDelete(req.params.id);
-    res.status(200).json("Product telah dihapus");
+    res.status(200).json("Product has been deleted...");
   } catch (err) {
     res.status(500).json(err);
   }
 });
 
-//Get product
+//GET PRODUCT
 router.get("/find/:id", async (req, res) => {
   try {
     const product = await Product.findById(req.params.id);
@@ -55,11 +56,10 @@ router.get("/find/:id", async (req, res) => {
   }
 });
 
-// Get All Products
+//GET ALL PRODUCTS
 router.get("/", async (req, res) => {
   const qNew = req.query.new;
   const qCategory = req.query.category;
-
   try {
     let products;
 
@@ -74,6 +74,7 @@ router.get("/", async (req, res) => {
     } else {
       products = await Product.find();
     }
+
     res.status(200).json(products);
   } catch (err) {
     res.status(500).json(err);
