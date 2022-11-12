@@ -12,6 +12,12 @@ const OrderSchema = new mongoose.Schema(
           type: Number,
           default: 1,
         },
+        size: {
+          type: String,
+        },
+        color: {
+            type: String,
+        },
       },
     ],
     amount: { type: Number, required: true },
