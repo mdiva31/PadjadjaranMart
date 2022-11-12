@@ -7,9 +7,10 @@ import { mobile } from "../responsive";
 import StripeCheckout from "react-stripe-checkout";
 import { useEffect, useState } from "react";
 import { userRequest } from "../requestMethods";
-import { useHistory } from "react-router";
 import { deleteProduct } from "../redux/cartRedux";
 import { useDispatch } from "react-redux";
+import { useLocation } from "react-router-dom";
+import { useNavigate } from 'react-router-dom';
 
 const KEY = process.env.REACT_APP_STRIPE;
 
@@ -154,13 +155,12 @@ const Button = styled.button`
 const Cart = () => {
   const cart = useSelector((state) => state.cart);
   const [stripeToken, setStripeToken] = useState(null);
-  const history = useHistory();
+  const navigate = useNavigate();
   const [product] = useState({});
   const [quantity] = useState(1);
   const [color] = useState("");
   const [size ] = useState("");
   const dispatch = useDispatch();
-
   const onToken = (token) => {
     setStripeToken(token);
   };
@@ -173,17 +173,18 @@ const Cart = () => {
   useEffect(() => {
     const makeRequest = async () => {
       try {
-        const res = await userRequest.post("/checkout/payment", {
+        const res = await userRequest.post("/stripe/payment", {
           tokenId: stripeToken.id,
-          amount: cart.total,
+          amount: cart.total * 100,
         });
-        history.push("/success", {
-          stripeData: res.data,
-          products: cart, });
+        navigate("/success", {state: {
+          data: res.data,
+          products: cart,} });
       } catch {}
     };
     stripeToken && makeRequest();
-  }, [stripeToken, cart.total, history]);
+  }, [stripeToken, cart.total, navigate, cart]);
+
   return (
     <Container>
       <Navbar />
@@ -244,7 +245,7 @@ const Cart = () => {
               amount={cart.total * 100}
               token={onToken}
               stripeKey={KEY}
-              currency="idr"
+              currency="IDR"
             >
               <Button>CHECKOUT NOW</Button>
             </StripeCheckout>
