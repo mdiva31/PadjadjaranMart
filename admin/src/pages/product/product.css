@@ -18,6 +18,7 @@
   border-radius: 5px;
   font-size: 16px;
   cursor: pointer;
+  margin-bottom: 1rem;
 }
 
 .productTop {
@@ -27,6 +28,7 @@
 .productTopLeft,
 .productTopRight {
   flex: 1;
+  flex-direction: column;
 }
 
 .productTopRight {

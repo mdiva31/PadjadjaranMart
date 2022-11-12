@@ -1,8 +1,10 @@
 .home{
     flex: 4;
+    flex-direction: column;
 }
 
 .homeWidgets{
     display: flex;
+    flex-direction: column;
     margin: 20px;
 }
