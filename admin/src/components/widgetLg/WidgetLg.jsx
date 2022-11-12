@@ -16,9 +16,6 @@ export default function WidgetLg() {
     };
     getOrders();
   }, []);
-  const Button = ({ type }) => {
-    return <button className={"widgetLgButton " + type}>{type}</button>;
-  };
   return (
     <div className="widgetLg">
       <h3 className="widgetLgTitle">Latest transactions</h3>
@@ -35,8 +32,15 @@ export default function WidgetLg() {
             <td className="widgetLgUser">
               <span className="widgetLgName">{order.userId}</span>
             </td>
-            <td className="widgetLgAddress">{`${order.products.productId}, ${order.products.color}`}</td>
-            <td className="widgetLgAddress">{`${order.address.city}, ${order.address.country}`}</td>
+            
+
+            <td className="widgetLgAddress">
+              {order.products.map((product, index) => (
+                <div>{`${index+1}. ${product.productId}, color: ${product.color}, size: ${product.size}, quantity: ${product.quantity}`}</div>
+              ))}
+            </td>
+
+            <td className="widgetLgAddress">{`${order.address.line1}, ${order.address.city}`}</td>
             <td className="widgetLgDate">{format(order.createdAt)}</td>
             <td className="widgetLgAmount">Rp.{order.amount/100},00-</td>
           </tr>

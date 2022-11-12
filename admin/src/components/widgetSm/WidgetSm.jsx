@@ -1,5 +1,4 @@
 import "./widgetSm.css";
-import { Visibility } from "@material-ui/icons";
 import { useEffect, useState } from "react";
 import { userRequest } from "../../requestMethods";
 
@@ -19,26 +18,30 @@ export default function WidgetSm() {
   return (
     <div className="widgetSm">
       <h3 className="widgetLgTitle">New join member</h3>
-      <ul className="widgetSmList">
+
+      <table className="widgetLgTable">
+        <tr className="widgetLgTr">
+          <th className="widgetLgTh">Profile</th>
+          <th className="widgetLgTh">ID</th>
+          <th className="widgetLgTh">Username</th>
+          <th className="widgetLgTh">Email</th>
+        </tr>
         {users.map((user) => (
-          <li className="widgetSmListItem" key={user._id}>
-            <img
+        <tr className="widgetLgTr">
+                 <th className="widgetLgTh"><img
               src={
                 user.img ||
                 "https://crowd-literature.eu/wp-content/uploads/2015/01/no-avatar.gif"
               }
               alt=""
               className="widgetSmImg"
-            />
-            <div className="widgetSmUser">
-              <span className="widgetSmUsername">{user.username}</span>
-            </div>
-            <div className="widgetSmUser">
-              <span className="widgetSmUsername">{user.email}</span>
-            </div>
-          </li>
-        ))}
-      </ul>
+            /></th>
+          <th className="widgetLgTh">{user._id}</th>
+          <th className="widgetLgTh">{user.username}</th>
+          <th className="widgetLgTh">{user.email}</th>   
+        </tr>
+         ))}
+      </table>
     </div>
   );
 }
