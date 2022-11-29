@@ -90,7 +90,7 @@ const Footer = () => {
       <Left>
         <Logo>PadjadjaranMart</Logo>
         <Desc>
-        Lorem, ipsum dolor sit amet consectetur adipisicing elit. Saepe placeat asperiores reiciendis quae dolore voluptatum eligendi corporis iusto, eaque eius totam harum. Architecto delectus eius nam iste, cum quisquam tenetur.
+        PadjadjaranMart merupakan suatu aplikasi e-commerce yang dimana penggunanya itu adalah warga Unpad, terdiri dari mahasiswa Unpad baik itu alumni maupun yang masih aktif. Tujuan dari dibuatnya aplikasi ini adalah agar memudahkan para mahasiswa Unpad terutama yang ingin menjual suatu produk atau barang dan juga para mahasiswa Unpad yang ingin mengetahui dan juga membeli barang atau produk yang dijual atau dihasilkan oleh sesama Mahasiswa Unpad. 
         </Desc>
         <SocialContainer>
           <SocialIcon color="3B5999">

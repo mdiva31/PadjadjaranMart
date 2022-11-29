@@ -29,19 +29,19 @@ export const sliderItems = [
   export const categories = [
     {
       id: 1,
-      img: "https://i.ibb.co/RDq2zWW/unknown-19.png",
+      img: "https://i.ibb.co/Bn632rC/Women-Fashion.jpg",
       title: "Women Zone!!!",
       cat:"women"
     },
     {
       id: 2,
-      img: "https://i.ibb.co/bdrMGTK/4p.png",
+      img: "https://i.ibb.co/xCfMz6n/Men-Fashion.png",
       title: "Men Zone!!!",
       cat:"men"
     },
     {
       id: 3,
-      img: "https://i.ibb.co/d7DJ2TN/jagawarung.png",
+      img: "https://i.ibb.co/SXHDSKH/Jacket-Fashion.png",
       title: "JACKETS!!!",
       cat:"jacket"
     },
